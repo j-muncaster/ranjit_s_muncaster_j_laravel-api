@@ -14,3 +14,5 @@ Route::get('/toys/{toy}', [ToyController::class, 'show']);
 Route::post('/toys', [ToyController::class, 'store']);
 Route::patch('/toys/{toy}', [ToyController::class, 'update']);
 Route::delete('/toys/{toy}', [ToyController::class, 'destroy']);
+
+Route::apiResource('brands', BrandController::class);

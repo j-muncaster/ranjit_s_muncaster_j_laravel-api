@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('toy_description');
             $table->string('toy_brand');
             $table->decimal('toy_price', 8, 2);
+            $table->string('m_image_url');
+            $table->string('t_image_url');
+            $table->string('l_image_url');
             $table->timestamps();
         });
     }
