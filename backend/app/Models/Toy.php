@@ -15,6 +15,6 @@ class Toy extends Model
 
     public function brand()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class, 'toy_brand');
     }
 }
