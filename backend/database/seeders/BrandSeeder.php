@@ -15,25 +15,25 @@ class BrandSeeder extends Seeder
         $snuggleCo = Brand::create([
             'brand_name' => 'SnuggleCo',
             'brand_description' => 'Soft, cuddly, and endlessly huggable. SnuggleCo brings comfort and joy to every snuggle.',
-            'location_manufactured' => 'China',
+            'brand_country' => 'China',
         ]);
 
         $brightMinds = Brand::create([
             'brand_name' => 'Bright Minds',
             'brand_description' => 'Stimulate little thinkers with Bright Minds’ smart, engaging toys designed to spark curiosity.',
-            'location_manufactured' => 'Canada',
+            'brand_country' => 'Canada',
         ]);
 
         $babyBloom = Brand::create([
             'brand_name' => 'Baby Bloom',
             'brand_description' => 'Gentle, natural, and full of charm. Baby Bloom helps your little one grow with love and care.',
-            'location_manufactured' => 'Australia',
+            'brand_country' => 'Australia',
         ]);
 
         $timberToys = Brand::create([
             'brand_name' => 'Timber Toys',
             'brand_description' => 'Classic, sturdy, and timeless. Timber Toys crafts quality wooden toys built to last.',
-            'location_manufactured' => 'Taiwan',
+            'brand_country' => 'Taiwan',
         ]);
     }
 }
