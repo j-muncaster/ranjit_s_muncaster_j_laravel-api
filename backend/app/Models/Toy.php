@@ -9,9 +9,9 @@ class Toy extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'toy_name',
-    ];
+    protected $table = 'tbl_toys';
+
+    protected $fillable = ['toy_name', 'toy_description', 'toy_price', 'toy_brand'];
 
     public function brand()
     {
