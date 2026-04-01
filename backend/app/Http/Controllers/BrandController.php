@@ -2,50 +2,92 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\UnauthorizedException;
-use App\Models\User;
 
 class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return ['hello' => 'world'];
+        // return ['hello' => 'world'];
+
+        $brandName = $request->query('brand_name', '');
+        $brandDescription = $request->query('brand_description', '');
+        $brandCountry = $request->query('brand_country', '');
+
+        $query = Brand::query();
+
+        if (!empty($brandName)) {
+            $query->where('brand_name', 'like', '%' . $brandName . '%');
+        }
+
+        if (!empty($brandDescription)) {
+            $query->where('brand_description', 'like', '%' . $brandDescription . '%');
+        }
+
+        if (!empty($brandCountry)) {
+            $query->where('brand_country', 'like', '%' . $brandCountry . '%');
+        }
+
+        return $query->get();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+   public function store(Request $request)
     {
-        //
+        $brand_name = $request->input('brand_name', null);
+
+        $brand = Brand::make([
+            'brand_name' => $request->input('brand_name'),
+            'brand_description' => $request->input('brand_description'),
+            'brand_country' => $request->input('brand_country'),
+        ]);
+
+        $brand->save();
+
+        return $brand;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Brand $brand)
     {
-        //
+        return $brand->load('brands');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Brand $brand)
     {
-        //
+        if ($request->has('brand_name')) { 
+            $brand->brand_name = $request->input('brand_name');
+            }
+
+        if ($request->has('brand_description')) { 
+                $brand->brand_description = $request->input('brand_description');
+            }
+
+        if ($request->has('brand_country')) { 
+                $brand->brand_country = $request->input('brand_country');
+            }
+
+        $brand->save();
+
+        return $brand;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Brand $brand)
     {
-        //
+        $brand->delete();
     }
 }

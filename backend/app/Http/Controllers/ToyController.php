@@ -12,23 +12,23 @@ class ToyController extends Controller
      */
     public function index(Request $request)
     {
-        $toy_brand = $request->input('toy_name', '');
+
+        $toyName = $request->input('toy_name', '');
         $brandName = $request->input('brand_name', '');
 
-        $toysQuery = Toy::query();
+        $query = Toy::query();
 
-        if ($brandName !== null) {
-            $toysQuery->where('toy_brand', '=', $brandName);
+        if ($toyName !== null) {
+        $query->where('toy_name', 'like', '%' . $toyName . '%');
         }
 
-        if (! empty($toy_b)) {
-            $toysQuery->whereHas('brand', function ($brandQuery) use ($toy_brand) {
-                $brandQuery->where('name', 'LIKE', '%' . $toy_brand . '%');
+        if (! empty($brandName)) {
+            $query->whereHas('brand', function ($q) use ($brandName) {
+                $q->where('brand_name', 'LIKE', '%' . $brandName . '%');
             });
         }
-        $toysQuery->with('brand');
-        $toys = $toysQuery->get();
-        return $toys;
+        
+        return $query->get();
     }
 
     /**
