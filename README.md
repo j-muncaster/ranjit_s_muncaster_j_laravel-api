@@ -78,8 +78,6 @@ This project is a full-stack application consisting of:
 # 📦 Project Setup Guide
 
 1. Clone the Repositories and Open in VS Code
-
-```bash
 git clone https://github.com/s-ranjit/ranjit_s_muncaster_j_vue-ajax
 git clone https://github.com/j-muncaster/ranjit_s_muncaster_j_laravel-api
 
