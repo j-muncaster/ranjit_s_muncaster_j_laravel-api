@@ -110,6 +110,7 @@ php artisan migrate:fresh --seed
 php artisan serve
 
 9. API Endpoints
+
 | Method | Endpoint           | Description        |
 | ------ | ------------------ | ------------------ |
 | GET    | `/api/brands`      | Get all brands     |
