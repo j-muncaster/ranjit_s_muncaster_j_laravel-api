@@ -1,4 +1,7 @@
-# Situ Ranjit & Jo Muncaster's Laravel API for Assignment 3
+# 🧸 Toy Store API & Frontend  
+**Situ Ranjit & Jo Muncaster – Assignment 3**
+
+This project is a full-stack application consisting of a Laravel backend API and a Vue-based frontend that consumes and displays toy and brand data.
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
@@ -9,136 +12,188 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## 📦 Project Overview
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Backend (Laravel API)**  
+  Handles database interactions, business logic, and RESTful endpoints.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Frontend (Vue / AJAX)**  
+  Fetches and displays data from the API.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Getting Started
 
-## Learning Laravel
+### 1. Clone Both Repositories
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## 🗂️GitHub Workflow
-1. 🎛 Separate branches according to pages, sections and languages.
-2. 🧩Proper branch naming conventions
-3. 👩🏻‍💻Work with GitHub directly with back and forth commits.
-4. 📁Add .gitignore
-5. 📄Well-written README file
-
-# 🧸 Toy Store API & Frontend
-
-This project is a full-stack application consisting of:
-
-- **Backend API (Laravel)** – Handles database, business logic, and RESTful endpoints  
-- **Frontend** – Consumes the API and displays toy and brand data  
-
-# 📦 Project Setup Guide
-
-1. Clone the Repositories and Open in VS Code
+```bash
 git clone https://github.com/s-ranjit/ranjit_s_muncaster_j_vue-ajax
 git clone https://github.com/j-muncaster/ranjit_s_muncaster_j_laravel-api
+```
 
-2. Navigate to Backend Folder
-cd toy-store-api
+# ⚙️ Backend Setup (Laravel)
 
-3. Install Dependencies
+### 1. Navigate to Backend Folder
+```bash
+cd ranjit_s_muncaster_j_laravel-api
+```
+
+### 2. Install Dependencies
+```bash
 composer install
+```
 
-4. Create Environment File
+### 3. Create Environment File
+```bash
 cp .env.example .env
+```
 
-5. Configure Database
-Open .env and update:
+### 4. Configure Environment Variables
+
+Open `.env` and update your database settings:
+
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
-DB_PORT=8889 (Mac) or (3306 on Windows)
+DB_PORT=8889  # (Mac MAMP) or 3306 (Windows)
 DB_DATABASE=db_toy_store
 DB_USERNAME=root
-DB_PASSWORD=root (Mac) or (leave empty for Windows)
+DB_PASSWORD=root  # (Mac) or leave empty for Windows
+```
 
-6. Create Database
-- Run MAMP / WAMP and open phpmyadmin
-- Create a database named db_toy_store
+---
 
-7. Run Migrations and Seed Database
+### 5. Create Database
+
+- Start MAMP / WAMP / XAMPP  
+- Open phpMyAdmin  
+- Create a database named:
+
+```
+db_toy_store
+```
+
+---
+
+### 6. Run Migrations & Seed Database
+
+```bash
 php artisan migrate:fresh --seed
+```
 
-8. Start Backend Server
+---
+
+### 7. Start Laravel Server
+
+```bash
 php artisan serve
+```
 
-9. API Endpoints
+Backend will run at :
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## 🔌 API Endpoints
+
+### Brands
 
 | Method | Endpoint           | Description        |
-| ------ | ------------------ | ------------------ |
+|--------|------------------|------------------|
 | GET    | `/api/brands`      | Get all brands     |
-| GET    | `/api/brands/{id}` | Get a single brand |
-| POST   | `/api/brands`      | Create a brand     |
-| PATCH  | `/api/brands/{id}` | Update a brand     |
-| DELETE | `/api/brands/{id}` | Delete a brand     |
+| GET    | `/api/brands/{id}` | Get single brand   |
+| POST   | `/api/brands`      | Create brand       |
+| PATCH  | `/api/brands/{id}` | Update brand       |
+| DELETE | `/api/brands/{id}` | Delete brand       |
+
+---
+
+### Toys
 
 | Method | Endpoint         | Description      |
-| ------ | ---------------- | ---------------- |
+|--------|----------------|----------------|
 | GET    | `/api/toys`      | Get all toys     |
-| GET    | `/api/toys/{id}` | Get a single toy |
-| POST   | `/api/toys`      | Create a toy     |
-| PATCH  | `/api/toys/{id}` | Update a toy     |
-| DELETE | `/api/toys/{id}` | Delete a toy     |
+| GET    | `/api/toys/{id}` | Get single toy   |
+| POST   | `/api/toys`      | Create toy       |
+| PATCH  | `/api/toys/{id}` | Update toy       |
+| DELETE | `/api/toys/{id}` | Delete toy       |
 
-10. Open the frontend file and click 'Go Live' at the bottom right of VS Code to view the page.
+---
+
+# 🎨 Frontend Setup (Vue)
+
+### 1. Navigate to Frontend Folder
+```bash
+cd ranjit_s_muncaster_j_vue-ajax
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. Run Development Server
+```bash
+npm run dev
+```
+
+Frontend will run at:
+```
+http://localhost:5173
+```
+
+---
+
+## 🔗 Connecting Frontend to Backend
+
+Ensure your frontend is making requests to:
+
+```
+http://127.0.0.1:8000/api
+```
+
+---
+
+## ⚠️ Important Notes
+
+- Make sure the Laravel server is running before starting the frontend  
+- If API requests fail:
+  - Check the API URL in your frontend code  
+  - Ensure CORS is enabled in Laravel  
+- Database must be created **before** running migrations  
+
+---
+
+## 🗂️ GitHub Workflow
+
+- Separate branches for features and sections  
+- Clear and consistent branch naming  
+- Regular commits with meaningful messages  
+- `.gitignore` included  
+- Well-documented README  
+
+---
 
 ## 🕰 History
-📆 Created on April 1, 2026
+
+📆 Created on April 1, 2026  
+
+---
 
 ## 👨‍💻 Credits
-Designed and Developed by Situ Ranjit and Josephine Muncaster 🎨
 
-## 📫Contact
-Feel free to reach out to us!
+Designed and Developed by:  
+**Situ Ranjit** & **Josephine Muncaster** 🎨  
 
-LinkedIn: [Situ Ranjit](https://www.linkedin.com/in/situ-ranjit-187970325/) , [Josephine Muncaster](https://www.linkedin.com/in/josephine-muncaster-382674135/)
+---
 
-## License
-MIT License
+## 📫 Contact
+
+- [Situ Ranjit – LinkedIn](https://www.linkedin.com/in/situ-ranjit-187970325/)  
+- [Josephine Muncaster – LinkedIn](https://www.linkedin.com/in/josephine-muncaster-382674135/)  
+
+---
+
+## 📄 License
+
+MIT License  
