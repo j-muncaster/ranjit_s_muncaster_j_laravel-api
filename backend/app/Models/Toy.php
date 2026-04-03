@@ -11,10 +11,10 @@ class Toy extends Model
 
     protected $table = 'tbl_toys';
 
-    protected $fillable = ['toy_name', 'toy_description', 'toy_price', 'toy_brand'];
+    protected $fillable = ['toy_name', 'toy_description', 'toy_price', 'brand_id', 'm_image_url'];
 
     public function brand()
     {
-        return $this->belongsTo(Brand::class, 'toy_brand');
+        return $this->belongsTo(Brand::class, 'brand_id');
     }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('toy_name');
             $table->string('toy_description');
-            $table->string('toy_brand');
+            $table->foreignId('brand_id')->constrained('tbl_brands');
             $table->decimal('toy_price', 8, 2);
             $table->string('m_image_url');
             $table->string('t_image_url');
