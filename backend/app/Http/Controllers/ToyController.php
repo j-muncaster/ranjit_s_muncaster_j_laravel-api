@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Toy;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class ToyController extends Controller
@@ -27,8 +28,18 @@ class ToyController extends Controller
                 $q->where('brand_name', 'LIKE', '%' . $brandName . '%');
             });
         }
-        
-        return $query->get();
+
+        $toys = $query->get();
+
+        return $toys->map(function ($toy) {
+            return [
+                'id'              => $toy->id,
+                'brand_name'      => optional($toy->brand)->brand_name,
+                'toy_name'        => $toy->toy_name,
+                'toy_description' => $toy->toy_description,
+                'toy_price'       => $toy->toy_price,
+            ];
+        });
     }
 
     /**
@@ -37,26 +48,33 @@ class ToyController extends Controller
     public function show(Toy $toy)
     {
         $toy->load('brand');
-        return $toy;
+        return [
+        'brand_name' => optional($toy->brand)->brand_name,
+        'toy_name' => $toy->toy_name,
+        'toy_description' => $toy->toy_description,
+        'toy_price' => $toy->toy_price,
+        'm_image_url' => $toy->m_image_url,
+    ];
     }
 
     /**
      * Store a newly created resource in storage.
      */
+    
     public function store(Request $request)
     {
-        $toy = $request->input('toy_name');
-        $toy_brand = $request->input('brand_name', null);
+        $brand = Brand::where('brand_name', $request->input('brand_name'))->first();
 
-        $toy = Toy::make([
+        if (!$brand) {
+            return response()->json(['error' => 'Brand not found'], 404);
+        }
+
+        $toy = Toy::create([
             'toy_name' => $request->input('toy_name'),
+            'brand_name' => $brand->id,
             'toy_description' => $request->input('toy_description'),
             'toy_price' => $request->input('toy_price'),
-            'toy_brand' => $request->input('toy_brand'),
         ]);
-
-        $toy->brand()->associate($toy_brand);
-        $toy->save();
 
         return $toy->load('brand');
     }
@@ -78,13 +96,13 @@ class ToyController extends Controller
                 $toy->toy_price = $request->input('toy_price');
             }
 
-        if ($request->has('toy_brand')) { 
-                $toy->toy_brand = $request->input('toy_brand');
+        if ($request->has('brand_name')) { 
+                $toy->toy_brand = $request->input('brand_name');
             }
 
         $toy->save();
 
-        return $toy->load('brand');
+        return $toy;
     }
 
     /**
