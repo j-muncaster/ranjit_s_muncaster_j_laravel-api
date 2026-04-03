@@ -16,7 +16,7 @@ class ToyController extends Controller
         $toyName = $request->input('toy_name', '');
         $brandName = $request->input('brand_name', '');
 
-        $query = Toy::query();
+        $query = Toy::with('brand');
 
         if ($toyName !== null) {
         $query->where('toy_name', 'like', '%' . $toyName . '%');
@@ -58,7 +58,7 @@ class ToyController extends Controller
         $toy->brand()->associate($toy_brand);
         $toy->save();
 
-        return $toy;
+        return $toy->load('brand');
     }
 
     /**
@@ -84,7 +84,7 @@ class ToyController extends Controller
 
         $toy->save();
 
-        return $toy;
+        return $toy->load('brand');
     }
 
     /**
