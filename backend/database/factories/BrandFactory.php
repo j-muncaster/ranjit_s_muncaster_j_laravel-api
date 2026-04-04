@@ -21,6 +21,7 @@ class BrandFactory extends Factory
             'brand_name' => fake()->unique()->words(2, true),
             'brand_description' => fake()->unique()->sentence(),
             'brand_country' => fake()->unique()->word(1, true),
+            'brand_image_url' => 'images/placeholder_m.jpg',
         ];
     }
 }

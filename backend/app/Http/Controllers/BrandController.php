@@ -17,6 +17,7 @@ class BrandController extends Controller
         $brandName = $request->query('brand_name', '');
         $brandDescription = $request->query('brand_description', '');
         $brandCountry = $request->query('brand_country', '');
+        $brandImageUrl = $request->query('brand_image_url', '');
 
         $query = Brand::query();
 
@@ -30,6 +31,10 @@ class BrandController extends Controller
 
         if (!empty($brandCountry)) {
             $query->where('brand_country', 'like', '%' . $brandCountry . '%');
+        }
+
+        if (!empty($brandImageUrl)) {
+            $query->where('brand_country', 'like', '%' . $brandImageUrl . '%');
         }
 
         return $query->get();
@@ -46,6 +51,7 @@ class BrandController extends Controller
             'brand_name' => $request->input('brand_name'),
             'brand_description' => $request->input('brand_description'),
             'brand_country' => $request->input('brand_country'),
+            'brand_image_url' => $request->input('brand_image_url'),
         ]);
 
         $brand->save();
@@ -58,7 +64,7 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        return $brand->load('brands');
+        return $brand;
     }
 
     /**
@@ -76,6 +82,10 @@ class BrandController extends Controller
 
         if ($request->has('brand_country')) { 
                 $brand->brand_country = $request->input('brand_country');
+            }
+
+        if ($request->has('brand_image_url')) { 
+                $brand->brand_country = $request->input('brand_image_url');
             }
 
         $brand->save();
