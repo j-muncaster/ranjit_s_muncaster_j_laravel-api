@@ -11,7 +11,7 @@ class Brand extends Model
 
     protected $table = 'tbl_brands';
     
-    protected $fillable = ['brand_name', 'brand_description', 'brand_country'];
+    protected $fillable = ['brand_name', 'brand_description', 'brand_country', 'brand_image_url'];
 
     public function toys()
     {
